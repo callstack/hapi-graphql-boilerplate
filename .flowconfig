@@ -1,0 +1,8 @@
+[ignore]
+<PROJECT_ROOT>/test/.*
+
+[include]
+
+[libs]
+
+[options]
