@@ -8,8 +8,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start-dev": "npm run lint && npm run flow-check && nodemon index.js",
+    "start": "node internals/scripts/runWithBabel.js",
+    "start-dev": "npm run lint && npm run flow-check && nodemon internals/scripts/runWithBabel.js",
     "flow-check": "node_modules/.bin/flow check",
     "lint": "eslint . --ext .js"
   },
