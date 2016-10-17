@@ -1,5 +1,5 @@
 {
   "events": {
-    "restart": "npm run lint && npm run flow-check"
+    "restart": "npm test"
   }
 }

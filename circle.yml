@@ -1,0 +1,10 @@
+machine:
+  node:
+    version: 6.2.0
+
+dependencies:
+  override:
+    - npm install -g yarn
+    - yarn
+  cache_directories:
+    - node_modules

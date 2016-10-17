@@ -25,7 +25,7 @@ const manifest = {
   registrations: [
     {
       plugin: {
-        register: './api',
+        register: './app/api',
         options: {
           secret: process.env.plugins_client_secret || 'secret1!',
           passwordSecret: process.env.plugins_client_password_secret || 'secret2!',
