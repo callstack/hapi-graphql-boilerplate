@@ -8,8 +8,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node internals/scripts/runWithBabel.js",
-    "start-dev": "npm run lint && npm run flow-check && nodemon internals/scripts/runWithBabel.js",
+    "start": "node internals/scripts/run.js",
+    "start-dev": "npm run lint && npm run flow-check && npm run watch",
+    "watch": "nodemon internals/scripts/run.js",
     "flow-check": "node_modules/.bin/flow check",
     "lint": "eslint . --ext .js"
   },
@@ -28,7 +29,6 @@
     "boilerplate"
   ],
   "dependencies": {
-    "bluebird": "^3.4.6",
     "glue": "^4.0.0",
     "good": "^7.0.2",
     "good-console": "^6.1.2",

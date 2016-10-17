@@ -1,6 +1,6 @@
 import Glue from 'glue';
 import path from 'path';
-import manifest from '../manifest';
+import manifest from '../app/manifest';
 
 if (!process.env.PRODUCTION) {
   manifest.registrations.push({
@@ -12,7 +12,7 @@ if (!process.env.PRODUCTION) {
 }
 
 /* eslint-disable no-console */
-Glue.compose(manifest, { relativeTo: path.join(__dirname, '..') }, (err, server) => {
+Glue.compose(manifest, { relativeTo: path.join(__dirname, '../') }, (err, server) => {
   if (err) {
     console.error('☹️ Registration error:', err);
   }
