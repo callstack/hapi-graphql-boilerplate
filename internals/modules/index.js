@@ -9,6 +9,19 @@
  */
 import reporter from './reporter';
 
-export default [
+const internalModules = [
   reporter,
 ];
+
+const devModules = [
+  {
+    plugin: {
+      register: 'blipp',
+      options: {},
+    },
+  },
+];
+
+export default process.env.PRODUCTION
+  ? internalModules
+  : [...internalModules, ...devModules];

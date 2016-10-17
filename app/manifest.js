@@ -1,3 +1,5 @@
+import createServer from '../internals/createServer';
+
 const manifest = {
   server: {
     connections: {
@@ -43,4 +45,4 @@ const manifest = {
   ],
 };
 
-module.exports = manifest;
+export default createServer(manifest);
