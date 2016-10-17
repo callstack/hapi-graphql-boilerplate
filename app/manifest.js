@@ -1,5 +1,3 @@
-import internalModules from '../internals/modules';
-
 const manifest = {
   server: {
     connections: {
@@ -42,7 +40,6 @@ const manifest = {
     {
       plugin: 'hapi-auth-jwt2',
     },
-    ...internalModules,
   ],
 };
 
