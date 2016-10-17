@@ -48,10 +48,22 @@
     "flow-bin": "^0.33.0",
     "nodemon": "^1.11.0"
   },
+  "babel": {
+    "presets": ["stage-3", "node6"]
+  },
   "eslintConfig": {
+    "extends": "airbnb/base",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
     "env": {
-      "node": true,
-      "es6": true
+      "es6": true,
+      "node": true
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+      "import/prefer-default-export": 0
     }
   }
 }
