@@ -1,3 +1,5 @@
+import internalModules from '../internals/modules';
+
 const manifest = {
   server: {
     connections: {
@@ -40,33 +42,7 @@ const manifest = {
     {
       plugin: 'hapi-auth-jwt2',
     },
-    {
-      plugin: {
-        register: 'good',
-        options: {
-          ops: {
-            interval: 60000,
-          },
-          reporters: {
-            console: [
-              {
-                module: 'good-squeeze',
-                name: 'Squeeze',
-                args: [
-                  {
-                    error: '*',
-                  },
-                ],
-              },
-              {
-                module: 'good-console',
-              },
-              'stdout',
-            ],
-          },
-        },
-      },
-    },
+    ...internalModules,
   ],
 };
 
