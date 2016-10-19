@@ -1,6 +1,46 @@
 import assert from 'assert';
+import { apolloHapi, graphiqlHapi } from 'apollo-server';
+import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 
 import status from './status';
+import GraphQLSchema from '../graphql/schema.graphql';
+import Mocks from '../graphql/mocks';
+import Resolvers from '../graphql/resolvers';
+
+const setupGraphQL =
+  (server, graphqlPath = '/graphql', graphiqlPath = '/graphiql') => {
+    const executableSchema = makeExecutableSchema({
+      typeDefs: [GraphQLSchema],
+      resolvers: Resolvers,
+    });
+
+    addMockFunctionsToSchema({
+      schema: executableSchema,
+      mocks: Mocks,
+      preserveResolvers: true,
+    });
+
+    server.register({
+      register: apolloHapi,
+      options: {
+        path: graphqlPath,
+        apolloOptions: () => ({
+          pretty: true,
+          schema: executableSchema,
+        }),
+      },
+    });
+
+    server.register({
+      register: graphiqlHapi,
+      options: {
+        path: graphiqlPath,
+        graphiqlOptions: {
+          endpointURL: `/v1/api${graphqlPath}`,
+        },
+      },
+    });
+  };
 
 const setupClient = (server, options, next) => {
   // const { db } = server.plugins;
@@ -32,6 +72,7 @@ const setupClient = (server, options, next) => {
     },
   });
 
+  setupGraphQL(server);
   server.route(status);
 
   next();
