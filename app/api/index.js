@@ -1,6 +1,11 @@
 import assert from 'assert';
+import { apolloHapi, graphiqlHapi } from 'apollo-server';
+import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
 
 import status from './status';
+import GraphQLSchema from '../graphql/schema.graphql';
+import Mocks from '../graphql/mocks';
+import Resolvers from '../graphql/resolvers';
 
 const setupClient = (server, options, next) => {
   // const { db } = server.plugins;
@@ -46,6 +51,39 @@ export function register(server, options, next) {
 
   server.dependency(['hapi-auth-jwt2'], (serverIn, nextIn) => {
     setupClient(serverIn, options, nextIn);
+  });
+
+  const executableSchema = makeExecutableSchema({
+    typeDefs: [GraphQLSchema],
+    resolvers: Resolvers,
+  });
+
+  addMockFunctionsToSchema({
+    schema: executableSchema,
+    mocks: Mocks,
+    preserveResolvers: true,
+  });
+
+  server.register({
+    register: apolloHapi,
+    options: {
+      path: '/graphql',
+      apolloOptions: {
+        // graphiql: true,
+        pretty: true,
+        schema: executableSchema,
+      },
+    },
+  });
+
+  server.register({
+    register: graphiqlHapi,
+    options: {
+      path: '/graphiql',
+      graphiqlOptions: {
+        endpointURL: '/v1/api/graphql',
+      },
+    },
   });
 
   next();
