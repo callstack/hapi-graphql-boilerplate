@@ -7,10 +7,11 @@ import Resolvers from './resolvers';
 
 export const setupGraphQL =
   (server, options, graphqlPath = '/graphql', graphiqlPath = '/graphiql') => {
+    const { db } = server.plugins;
 
     const executableSchema = makeExecutableSchema({
       typeDefs: [GraphQLSchema],
-      resolvers: Resolvers,
+      resolvers: Resolvers(db),
     });
 
     addMockFunctionsToSchema({

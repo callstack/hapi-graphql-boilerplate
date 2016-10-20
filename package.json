@@ -33,6 +33,8 @@
     "apollo-server": "^0.3.2",
     "babel-plugin-inline-import": "^2.0.4",
     "babel-plugin-transform-flow-strip-types": "^6.14.0",
+    "babel-preset-stage-3": "^6.17.0",
+    "bcryptjs": "^2.3.0",
     "casual": "^1.5.6",
     "eslint-plugin-flowtype": "^2.20.0",
     "glue": "^4.0.0",
@@ -42,7 +44,9 @@
     "graphql": "^0.7.2",
     "graphql-tools": "^0.7.2",
     "hapi": "^15.1.1",
-    "hapi-auth-basic": "^4.2.0"
+    "hapi-auth-basic": "^4.2.0",
+    "joi": "^9.2.0",
+    "mongoose": "^4.6.4"
   },
   "devDependencies": {
     "babel-preset-node6": "^11.0.0",
@@ -58,7 +62,7 @@
   },
   "babel": {
     "presets": [
-      "stage-3",
+      "stage-0",
       "node6"
     ],
     "plugins": [
@@ -83,7 +87,8 @@
           "devDependencies": true
         }
       ],
-      "import/prefer-default-export": 0
+      "import/prefer-default-export": 0,
+      "newline-per-chained-call": 0
     }
   }
 }

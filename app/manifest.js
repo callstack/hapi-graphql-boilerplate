@@ -29,13 +29,21 @@ const manifest = {
       plugin: {
         register: './app/api',
         options: {
-          superAdminUsername: process.env.super_admin_username || 'superadmin',
-          superAdminPassword: process.env.super_admin_password || 'superpassword',
+          superAdminUsername: process.env.super_admin_username || 'admin',
+          superAdminPassword: process.env.super_admin_password || 'admin',
         },
       },
       options: {
         routes: {
           prefix: '/v1/api',
+        },
+      },
+    },
+    {
+      plugin: {
+        register: './app/db',
+        options: {
+          uri: process.env.plugins_db_uri || 'mongodb://localhost:27017/testdatabase',
         },
       },
     },
