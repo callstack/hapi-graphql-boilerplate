@@ -1,4 +1,3 @@
-import casual from 'casual';
 
 const mocks = {
   String: () => 'It works!',

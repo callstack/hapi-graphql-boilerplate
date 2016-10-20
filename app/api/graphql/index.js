@@ -7,7 +7,6 @@ import Resolvers from './resolvers';
 
 export const setupGraphQL =
   (server, options, graphqlPath = '/graphql', graphiqlPath = '/graphiql') => {
-
     const executableSchema = makeExecutableSchema({
       typeDefs: [GraphQLSchema],
       resolvers: Resolvers,
