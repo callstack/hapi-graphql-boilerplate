@@ -23,9 +23,7 @@ export const setupGraphQL =
       register: apolloHapi,
       options: {
         route: {
-          auth: {
-            strategies: ['basic', 'admin'],
-          },
+          auth: 'basic',
         },
         path: graphqlPath,
         apolloOptions: () => ({
