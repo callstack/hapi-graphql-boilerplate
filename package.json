@@ -11,7 +11,7 @@
     "start": "node internals/scripts/run.js",
     "start-dev": "npm test && npm run watch",
     "watch": "nodemon internals/scripts/run.js",
-    "test": "npm run lint && npm run flow-check",
+    "test": "npm run lint && npm run flow-check && jest",
     "flow-check": "node_modules/.bin/flow check",
     "lint": "eslint . --ext .js"
   },
@@ -54,6 +54,7 @@
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "flow-bin": "^0.33.0",
+    "jest-cli": "^16.0.2",
     "nodemon": "^1.11.0"
   },
   "babel": {
