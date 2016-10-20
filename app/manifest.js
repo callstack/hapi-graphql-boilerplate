@@ -29,8 +29,8 @@ const manifest = {
       plugin: {
         register: './app/api',
         options: {
-          secret: process.env.plugins_client_secret || 'secret1!',
-          passwordSecret: process.env.plugins_client_password_secret || 'secret2!',
+          superAdminUsername: process.env.super_admin_username || 'superadmin',
+          superAdminPassword: process.env.super_admin_password || 'superpassword',
         },
       },
       options: {
@@ -40,7 +40,7 @@ const manifest = {
       },
     },
     {
-      plugin: 'hapi-auth-jwt2',
+      plugin: 'hapi-auth-basic',
     },
   ],
 };
