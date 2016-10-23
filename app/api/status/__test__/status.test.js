@@ -21,7 +21,7 @@ beforeAll((done) => {
 /* eslint-enable */
 
 describe('status test', () => {
-  it('responds with status code 200 and status ok', (done) => {
+  it('it should respond with status code 200 and status ok', (done) => {
     const options = {
       method: 'GET',
       url: '/v1/api/status',
