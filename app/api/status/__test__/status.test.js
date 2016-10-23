@@ -1,13 +1,25 @@
-import labbable from '../../../../internals/server';
+import Glue from 'glue';
+import manifest from '../../../manifest';
 
 let server;
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 beforeAll((done) => {
-  labbable.ready((error, glueServer) => {
-    server = glueServer;
-    done();
+  Glue.compose(manifest, { relativeTo: process.cwd() }, (err, serv) => {
+    if (err) {
+      console.error('☹️ Registration error:', err);
+    }
+    serv.initialize((error) => {
+      if (error) {
+        throw error;
+      }
+      server = serv;
+      done();
+    });
   });
 });
+/* eslint-enable */
+
 describe('status test', () => {
   it('responds with status code 200 and status ok', (done) => {
     const options = {
@@ -22,3 +34,4 @@ describe('status test', () => {
     });
   });
 });
+/* eslint-enable */
