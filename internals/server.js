@@ -1,4 +1,3 @@
-
 import Glue from 'glue';
 import path from 'path';
 import manifest from '../app/manifest';
