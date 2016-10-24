@@ -3,11 +3,10 @@ import manifest from '../../../manifest';
 
 let server;
 /* eslint-disable no-undef */
-/* eslint-disable no-console */
 beforeAll((done) => {
   Glue.compose(manifest, { relativeTo: process.cwd() }, (err, serv) => {
     if (err) {
-      console.error('☹️ Registration error:', err);
+      console.error('☹️ Registration error:', err); // eslint-disable-line no-console
     }
     serv.initialize((error) => {
       if (error) {
@@ -18,7 +17,6 @@ beforeAll((done) => {
     });
   });
 });
-/* eslint-enable */
 
 describe('status test', () => {
   it('it should respond with status code 200 and status ok', (done) => {
