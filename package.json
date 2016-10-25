@@ -8,11 +8,12 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node internals/scripts/run.js",
-    "start-dev": "npm test && npm run watch",
+    "start": "npm run check && node internals/scripts/run.js",
+    "start-dev": "npm run check && npm run watch",
     "watch": "nodemon internals/scripts/run.js",
-    "test": "npm run lint && npm run flow-check && jest",
-    "flow-check": "node_modules/.bin/flow check",
+    "check": "npm run lint && npm run flow",
+    "test": "npm run check && jest",
+    "flow": "node_modules/.bin/flow check",
     "lint": "eslint . --ext .js"
   },
   "author": "Mike Chudziak (mike866)",

@@ -6,10 +6,9 @@
 
 import internalModules from './modules';
 
-// Available options
+/* Available options */
 type ManifestOpts = {
-
-  // Should internal modules be enabled
+  /* Should internal modules be enabled */
   useInternalModules?: boolean,
 };
 
