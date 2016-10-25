@@ -1,29 +1,21 @@
 import { apolloHapi, graphiqlHapi } from 'apollo-server';
-import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+import { makeExecutableSchema } from 'graphql-tools';
 
 import GraphQLSchema from './schema.graphql';
-import Mocks from './mocks';
-import Resolvers from './resolvers';
+import createResolvers from './resolvers';
 
 export const setupGraphQL =
   (server, options, graphqlPath = '/graphql', graphiqlPath = '/graphiql') => {
+    const { db } = server.plugins;
+
     const executableSchema = makeExecutableSchema({
       typeDefs: [GraphQLSchema],
-      resolvers: Resolvers,
-    });
-
-    addMockFunctionsToSchema({
-      schema: executableSchema,
-      mocks: Mocks,
-      preserveResolvers: true,
+      resolvers: createResolvers(db),
     });
 
     server.register({
       register: apolloHapi,
       options: {
-        route: {
-          auth: 'basic',
-        },
         path: graphqlPath,
         apolloOptions: () => ({
           pretty: true,
@@ -31,9 +23,6 @@ export const setupGraphQL =
         }),
       },
     });
-
-    const superAdminCredentials =
-      new Buffer(`${options.superAdminUsername}:${options.superAdminPassword}`).toString('base64');
 
     server.register({
       register: graphiqlHapi,
@@ -44,7 +33,6 @@ export const setupGraphQL =
         path: graphiqlPath,
         graphiqlOptions: {
           endpointURL: `/v1/api${graphqlPath}`,
-          passHeader: `'Authorization': 'Basic ${superAdminCredentials}',`,
         },
       },
     });

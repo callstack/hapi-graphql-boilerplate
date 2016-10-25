@@ -14,17 +14,14 @@ type ManifestOpts = {
 };
 
 type Manifest = {
-  registrations?: Array,
+  registrations?: Array<Object>,
 };
 
-export default function createManifest(manifest: Manifest, opts?: ManifestOpts) {
-  if (!opts) {
-    opts = {};
-  }
-
+export default function createManifest(manifest: Manifest, opts?: ManifestOpts = {}) {
   if (opts.useInternalModules !== false) {
+    // eslint-disable-next-line no-param-reassign
     manifest.registrations = (manifest.registrations || []).concat(internalModules);
   }
 
   return manifest;
-};
+}

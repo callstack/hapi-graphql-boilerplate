@@ -1,22 +1,21 @@
-const resolvers = {
+const resolvers = (db) => ({
   Query: {
-    author() {
-      return { id: 1, firstName: 'Hello', lastName: 'World' };
+    async getUserById(root, { id }) {
+      return await db.User.findById(id);
+    },
+
+    async getUserByEmail(root, { email }) {
+      return await db.User.findOne({ email });
     },
   },
-  Author: {
-    posts() {
-      return [
-        { id: 1, title: 'A post', text: 'Some text', views: 2 },
-        { id: 2, title: 'Another post', text: 'Some other text', views: 200 },
-      ];
+  Mutation: {
+    async createUser(root, args) {
+      const user = new db.User(args);
+      await user.save();
+
+      return user;
     },
   },
-  Post: {
-    author() {
-      return { id: 1, firstName: 'Hello', lastName: 'World' };
-    },
-  },
-};
+});
 
 export default resolvers;

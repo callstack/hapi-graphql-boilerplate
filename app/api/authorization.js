@@ -10,17 +10,4 @@ export const setupAuthorization = (server, options) => {
       return callback(null, false);
     },
   });
-
-  server.auth.strategy('basic', 'basic', {
-    validateFunc: (request, username, password, callback) => {
-      if (isSuperAdmin(username, password)) {
-        return callback(null, true, {});
-      }
-      // TODO: Handle auth.
-      if (username !== password) {
-        return callback(null, false);
-      }
-      return callback(null, true, {});
-    },
-  });
 };

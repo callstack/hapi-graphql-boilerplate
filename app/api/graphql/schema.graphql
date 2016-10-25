@@ -1,23 +1,18 @@
-type Author {
-  id: Int
-  firstName: String
-  lastName: String
-  posts: [Post]
-}
-
-type Post {
-  id: Int
-  title: String
-  text: String
-  views: Int
-  author: Author
+type User {
+  id: ID!
+  email: String!
 }
 
 type Query {
-  author(firstName: String, lastName: String): Author
-  getFortuneCookie: String
+  getUserById(id: ID!): User
+  getUserByEmail(email: String!): User
+}
+
+type Mutation {
+  createUser(email: String!): User
 }
 
 schema {
   query: Query
+  mutation: Mutation
 }
