@@ -49,6 +49,7 @@
     "mongoose": "^4.6.4"
   },
   "devDependencies": {
+    "babel-eslint": "^7.0.0",
     "babel-preset-node6": "^11.0.0",
     "babel-preset-stage-3": "^6.17.0",
     "babel-register": "^6.16.3",
@@ -57,6 +58,7 @@
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
     "flow-bin": "^0.33.0",
     "nodemon": "^1.11.0"
   },
@@ -71,7 +73,8 @@
     ]
   },
   "eslintConfig": {
-    "extends": "airbnb/base",
+    "extends": "airbnb",
+    "parser": "babel-eslint",
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module"
@@ -88,7 +91,8 @@
         }
       ],
       "import/prefer-default-export": 0,
-      "newline-per-chained-call": 0
+      "newline-per-chained-call": 0,
+      "arrow-parens": 0
     }
   }
 }

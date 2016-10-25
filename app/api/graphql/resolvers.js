@@ -1,7 +1,19 @@
 const resolvers = (db) => ({
   Query: {
-    async user(root, args){
-      return await db.User.findOne({ email: args.email });
+    async getUserById(root, { id }) {
+      return await db.User.findById(id);
+    },
+
+    async getUserByEmail(root, { email }) {
+      return await db.User.findOne({ email });
+    },
+  },
+  Mutation: {
+    async createUser(root, args) {
+      const user = new db.User(args);
+      await user.save();
+
+      return user;
     },
   },
 });
