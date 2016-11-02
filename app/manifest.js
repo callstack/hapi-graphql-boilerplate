@@ -1,6 +1,8 @@
 import createServer from '../internals/createServer';
 
-const manifest = {
+import type { Manifest } from '../internals/types';
+
+const manifest: Manifest = {
   server: {
     connections: {
       router: {

@@ -9,11 +9,13 @@
  */
 import reporter from './reporter';
 
-const internalModules = [
+import type { Plugin } from '../types';
+
+const internalModules: Array<Plugin> = [
   reporter,
 ];
 
-const devModules = [
+const devModules: Array<Plugin> = [
   {
     plugin: {
       register: 'blipp',

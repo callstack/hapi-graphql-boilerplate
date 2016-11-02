@@ -1,8 +1,9 @@
 [ignore]
-<PROJECT_ROOT>/test/.*
-<PROJECT_ROOT>/node_modules/.*
+.*/__test__/.*
+.*bower\.json
 
 [include]
+./node_modules/
 
 [libs]
 

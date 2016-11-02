@@ -2,10 +2,9 @@ import { setupGraphQL } from './graphql';
 import { setupAuthorization } from './authorization';
 import status from './status';
 
+import type { Server } from '../../internals/types';
 
-const setupClient = (server, options, next) => {
-  // const { db } = server.plugins;
-
+const setupClient = (server: Server, options: Object, next: Function): void => {
   server.bind({
     ...server.plugins,
     options,
@@ -19,7 +18,7 @@ const setupClient = (server, options, next) => {
   next();
 };
 
-export function register(server, options, next) {
+export function register(server: Server, options: Object, next: Function): void {
   server.handler('async', (route, handler) => (request, reply) => {
     handler.bind(this)(request, reply).catch(reply);
   });

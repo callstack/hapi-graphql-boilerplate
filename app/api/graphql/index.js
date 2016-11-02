@@ -1,11 +1,22 @@
+/**
+ * @flow
+ */
 import { apolloHapi, graphiqlHapi } from 'apollo-server';
 import { makeExecutableSchema } from 'graphql-tools';
 
+/* $FlowFixMe */
 import GraphQLSchema from './schema.graphql';
 import createResolvers from './resolvers';
 
+import type { Server } from '../../../internals/types';
+
 export const setupGraphQL =
-  (server, options, graphqlPath = '/graphql', graphiqlPath = '/graphiql') => {
+  (
+    server: Server,
+    options: Object,
+    graphqlPath: string = '/graphql',
+    graphiqlPath: string = '/graphiql'
+  ) => {
     const { db } = server.plugins;
 
     const executableSchema = makeExecutableSchema({

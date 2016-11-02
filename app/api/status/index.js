@@ -1,4 +1,9 @@
-export default [
+/**
+ * @flow
+ */
+import type { Route } from '../../../internals/types';
+
+const routes: Array<Route> = [
   {
     method: 'GET',
     path: '/status',
@@ -9,3 +14,5 @@ export default [
     },
   },
 ];
+
+export default routes;
