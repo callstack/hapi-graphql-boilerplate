@@ -37,6 +37,7 @@
     "babel-preset-stage-3": "^6.17.0",
     "bcryptjs": "^2.3.0",
     "casual": "^1.5.6",
+    "dataloader": "^1.2.0",
     "eslint-plugin-flowtype": "^2.20.0",
     "glue": "^4.0.0",
     "good": "^7.0.2",
