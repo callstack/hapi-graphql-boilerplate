@@ -43,7 +43,7 @@
     "good-console": "^6.1.2",
     "good-squeeze": "^5.0.0",
     "graphql": "^0.7.2",
-    "graphql-tools": "^0.7.2",
+    "graphql-tools": "^0.8.0",
     "hapi": "^15.1.1",
     "hapi-auth-basic": "^4.2.0",
     "joi": "^9.2.0",
