@@ -3,10 +3,11 @@ import manifest from '../../../manifest';
 
 let server;
 /* eslint-disable no-undef */
+jest.disableAutomock();
 beforeAll((done) => {
   Glue.compose(manifest, { relativeTo: process.cwd() }, (err, serv) => {
     if (err) {
-      console.error('☹️ Registration error:', err); // eslint-disable-line no-console
+      done();
     }
     serv.initialize((error) => {
       if (error) {
