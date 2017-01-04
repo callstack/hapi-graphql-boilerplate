@@ -13,8 +13,7 @@ const getDataLoader =
       return ids.map((id) => resultMap[id]);
     });
 
-export default (db) => ({
+export default (db: Object) => ({
   userById: getDataLoader('_id', db.User),
   userByEmail: getDataLoader('email', db.User),
 });
-

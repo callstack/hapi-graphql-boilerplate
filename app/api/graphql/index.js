@@ -6,7 +6,7 @@ import { makeExecutableSchema } from 'graphql-tools';
 
 /* $FlowFixMe */
 import GraphQLSchema from './schema.graphql';
-import createResolvers from './resolvers';
+import resolvers from './resolvers';
 import getUserLoaders from './userLoaders';
 
 import type { Server } from '../../../internals/types';
@@ -22,7 +22,7 @@ export const setupGraphQL =
 
     const executableSchema = makeExecutableSchema({
       typeDefs: [GraphQLSchema],
-      resolvers: createResolvers(db),
+      resolvers,
     });
 
     server.register({
@@ -33,6 +33,7 @@ export const setupGraphQL =
           pretty: true,
           schema: executableSchema,
           context: {
+            db,
             loaders: getUserLoaders(db),
           },
         }),
