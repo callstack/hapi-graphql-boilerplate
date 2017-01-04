@@ -16,7 +16,7 @@ export const setupGraphQL =
     server: Server,
     options: Object,
     graphqlPath: string = '/graphql',
-    graphiqlPath: string = '/graphiql'
+    graphiqlPath: string = '/graphiql',
   ) => {
     const { db } = server.plugins;
 
