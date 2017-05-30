@@ -1,7 +1,7 @@
 /**
  * @flow
  */
-import { apolloHapi, graphiqlHapi } from 'apollo-server';
+import { graphqlHapi, graphiqlHapi } from 'graphql-server-hapi';
 import { makeExecutableSchema } from 'graphql-tools';
 
 /* $FlowFixMe */
@@ -26,10 +26,10 @@ export const setupGraphQL =
     });
 
     server.register({
-      register: apolloHapi,
+      register: graphqlHapi,
       options: {
         path: graphqlPath,
-        apolloOptions: () => ({
+        graphqlOptions: () => ({
           pretty: true,
           schema: executableSchema,
           context: {
