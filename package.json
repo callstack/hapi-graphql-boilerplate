@@ -31,7 +31,7 @@
     "boilerplate"
   ],
   "dependencies": {
-    "apollo-server": "^0.3.3",
+    "graphql-server-hapi": "^0.4.4",
     "babel-plugin-inline-import": "^2.0.4",
     "babel-plugin-transform-flow-strip-types": "^6.18.0",
     "babel-preset-stage-3": "^6.17.0",
